@@ -1,7 +1,29 @@
+
 const allDivs = document.querySelectorAll('.cell')
 const allGamesView = document.querySelector('.game-select-view')
 const singleGameView = document.querySelector('.game-display')
-console.log(singleGameView)
+const searchFormDiv = document.querySelector('form')
+console.log(searchFormDiv)
+
+const fetchFrom = async (url) => {
+    try {
+        const response = await fetch(url)
+        console.log(response)
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getSearchedGames = async (e) => {
+    e.preventDefault()
+    const searchTerm = e.target.children[0].value
+    const data = await fetchFrom(`https://api.rawg.io/api/games?key=749e1b5c19c34bdd9870484338400f97&search=${searchTerm}`)
+    console.log(data)
+}
+
+searchFormDiv.addEventListener('submit', getSearchedGames)
 
 
 function colorAllDivs(divArray) {
@@ -32,8 +54,4 @@ function clickHandler(e) {
 }
 
 
-
-function showGame() {
-
-}
 

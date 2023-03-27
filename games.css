@@ -4,6 +4,11 @@
     z-index: 1;
 } */
 
+.nav-section {
+    display: flex;
+    justify-content: space-between;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
