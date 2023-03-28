@@ -1,12 +1,20 @@
-
-
 /* .game-select-view {
     z-index: 1;
 } */
 
+.search-form {
+    align-self: center;
+}
+
 .nav-section {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+}
+
+.game-filter {
+    display:flex;
+    align-items: center;
 }
 
 .container {
@@ -28,3 +36,6 @@
     height: 136px;
 }
 
+#logo {
+    margin-top: 0px;
+}
