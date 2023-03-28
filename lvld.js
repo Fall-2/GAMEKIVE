@@ -23,14 +23,14 @@ const getGames = async () => {
 
   allGamesData.forEach((game) => {
     let li = document.createElement("li");
-    let a = document.createElement("a");
+    let p = document.createElement("p");
     let div = document.createElement("div");
     let img = document.createElement("img")
     img.src = game.background_image;
     img.classList.add("game-image")
-    a.innerText = game.name;
+    p.innerText = game.name;
 
-    li.append(a);
+    div.append(p);
     li.append(div);
     div.append(img)
     gameList.append(li);
