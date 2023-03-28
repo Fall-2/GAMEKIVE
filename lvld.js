@@ -13,16 +13,17 @@ const fetchFrom = async (url) => {
   return data;
 };
 
+let gameQuantity = 5
 ///DOM elements
 const gameList = document.querySelector("#game-list");
 
 const getGames = async () => {
-  let allGamesData = await fetchFrom(gameListAPI);
+  let allGamesData = await fetchFrom(gameListAPI + `&page_size=${gameQuantity}`);
   allGamesData = allGamesData.results;
   console.log(allGamesData);
 
   allGamesData.forEach((game) => {
-    let li = document.createElement("li");
+    
     let p = document.createElement("p");
     let div = document.createElement("div");
     let img = document.createElement("img")
@@ -31,8 +32,7 @@ const getGames = async () => {
     p.innerText = game.name;
 
     div.append(p);
-    li.append(div);
     div.append(img)
-    gameList.append(li);
+    gameList.append(div);
   });
 };
