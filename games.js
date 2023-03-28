@@ -17,7 +17,7 @@ const fetchFrom = async (url) => {
     }
 }
 
-const getSearchedGames = async (e) => {git 
+const getSearchedGames = async (e) => {
     e.preventDefault()
     const searchTerm = e.target.children[0].value
     const data = await fetchFrom(`https://api.rawg.io/api/games?key=749e1b5c19c34bdd9870484338400f97&search=${searchTerm}`)
