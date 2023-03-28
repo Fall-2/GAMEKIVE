@@ -2,10 +2,10 @@
 const allDivs = document.querySelectorAll('.cell')
 const allGamesView = document.querySelector('.game-select-view')
 const singleGameView = document.querySelector('.game-display')
-const searchFormDiv = document.querySelector('form')
+const searchFormDiv = document.querySelector('.search-form')
 const gameFilterForm = document.querySelector('.game-filter')
 const gameFilterInput = document.querySelector('#game-filter-input')
-console.log(gameFilterInput)
+
 const fetchFrom = async (url) => {
     try {
         const response = await fetch(url)
@@ -17,7 +17,7 @@ const fetchFrom = async (url) => {
     }
 }
 
-const getSearchedGames = async (e) => {
+const getSearchedGames = async (e) => {git 
     e.preventDefault()
     const searchTerm = e.target.children[0].value
     const data = await fetchFrom(`https://api.rawg.io/api/games?key=749e1b5c19c34bdd9870484338400f97&search=${searchTerm}`)
