@@ -2,3 +2,47 @@
   height:100px;
   width: 100px;
 }
+
+#game-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:;
+    
+    }
+
+    div{
+    inline-size: 150px;
+
+    }
+
+    nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #D2B9D3 ;
+      }
+      
+      .nav-link {
+        float: left;
+      }
+      
+      .nav-link a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      
+      .nav-link a:hover {
+        background-color: lightpink;
+      }
+      .active {
+        background-color: #967BB6;
+      }
+
+  
+   
