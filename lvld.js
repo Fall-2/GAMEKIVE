@@ -13,32 +13,26 @@ const fetchFrom = async (url) => {
   return data;
 };
 
-let gameQuantity = 5;
+let gameQuantity = 5
 ///DOM elements
 const gameList = document.querySelector("#game-list");
 
 const getGames = async () => {
-  let allGamesData = await fetchFrom(
-    gameListAPI + `&page_size=${gameQuantity}`
-  );
+  let allGamesData = await fetchFrom(gameListAPI + `&page_size=${gameQuantity}`);
   allGamesData = allGamesData.results;
   console.log(allGamesData);
 
   allGamesData.forEach((game) => {
+    
     let p = document.createElement("p");
     let div = document.createElement("div");
-    let img = document.createElement("img");
+    let img = document.createElement("img")
     img.src = game.background_image;
-    img.classList.add("game-image");
-    div.classList.add("cell")
-    div.addEventListener("click", clickHandler);
-
-    
-    img.id = game.id;
+    img.classList.add("game-image")
     p.innerText = game.name;
 
     div.append(p);
-    div.append(img);
+    div.append(img)
     gameList.append(div);
   });
 };
