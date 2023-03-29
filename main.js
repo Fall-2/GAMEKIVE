@@ -38,8 +38,8 @@ const getFilteredGames = async (e) => {
   console.log(data);
 };
 
-searchFormDiv.addEventListener("submit", getSearchedGames);
-gameFilterInput.addEventListener("click", getFilteredGames);
+// searchFormDiv.addEventListener("submit", getSearchedGames);
+// gameFilterInput.addEventListener("click", getFilteredGames);
 
 allDivs.forEach((div) => {
   div.addEventListener("click", clickHandler);
