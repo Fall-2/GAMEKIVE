@@ -1,8 +1,11 @@
-
+body {
+  width: 100%;
+  height: 100vh;
+}
 
 .game-image {
-  height:486px;
-  width: 147px;
+  height: 75%;
+  width: 100%;
   border-radius: 3px;
   position: auto;
 }
@@ -12,7 +15,7 @@
   width: 100%;
 }
 #game-list {
-  height: 100%;
+  height: 75%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -27,7 +30,7 @@ body {
   background-color: #C84B31;
 }
 
- .navbar{
+ /* .navbar{
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -35,11 +38,13 @@ body {
   background-color: #617143;
 }
 
-.nav-link a{
-  float: left;
-}
 
-.nav-link.active{
+
+/* .nav-link a{
+  float: left;
+} */
+
+/* .nav-link.active{
   display: block;
   color: black;
   text-align: center;
@@ -50,12 +55,9 @@ body {
 .nav-link a:hover {
   background-color: #ECDBBA;
 }
-.active {
-  background-color: #;
-}
+
 
 .card{
-  background: white;
-  height: 35%;
-  text-align: center;
+  width: 15%;
+  height: 30%;
 }
