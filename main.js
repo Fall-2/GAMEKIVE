@@ -1,9 +1,20 @@
-const allDivs = document.querySelectorAll(".cell");
-const allGamesView = document.querySelector(".game-select-view");
-const singleGameView = document.querySelector(".game-display");
+import ourAPIKEY from "./config.js";
+
+console.log(ourAPIKEY);
+
+const basic = `https://api.rawg.io/api/games/`
+const gameListAPI = `https://api.rawg.io/api/games?key=${ourAPIKEY.OUR_API_KEY}`
+
 const searchFormDiv = document.querySelector(".search-form");
-const gameFilterForm = document.querySelector(".game-filter");
-const gameFilterInput = document.querySelector("#game-filter-input");
+const gamesList = document.querySelector('#game-list')
+// const gameFilterForm = document.querySelector(".game-filter");
+// const gameFilterInput = document.querySelector("#game-filter-input");
+console.log(gamesList)
+
+const displayPopularGames = async () => {
+
+}
+
 
 
 const fetchFrom = async (url) => {
@@ -42,9 +53,9 @@ const getFilteredGames = async (e) => {
 // searchFormDiv.addEventListener("submit", getSearchedGames);
 // gameFilterInput.addEventListener("click", getFilteredGames);
 
-allDivs.forEach((div) => {
-  div.addEventListener("click", clickHandler);
-});
+// allDivs.forEach((div) => {
+//   div.addEventListener("click", clickHandler);
+// });
 
 function clickHandler(e) {
   if (window.location.href !== "singleGameView.html") {

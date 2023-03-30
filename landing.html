@@ -1,37 +1,55 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=".css">
     <title>GAMEKIVE
     </title>
 </head>
+
 <body>
-    <div>
-    <section>
+    <section class="navbar">
         <div>
-            <h1></h1>
+            <h1 class="brand"><a href="landing.html">gameKive</a></h1>
             <div>
-                <nav></nav>
+                <nav>
+                    <h3 class="link" id="games-link"><a href="games.html">Games</a></h3>
+                    <h3 class="link" id="lists-link">Your Lists <a></a></h3>
+                </nav>
             </div>
-            <form action=""></form>
+            <form action="" class="search-form">
+                <input class='search-input' type="text">
+            </form>
         </div>
     </section>
-    </div>
     <section>
- <div>
-   <img src="" alt="">
- </div>
- <div>
-    <h1></h1>
- </div>
+        <div>
+            <img src="" alt="">
+        </div>
+        <div>
+            <h1>gameKive</h1>
+            <h4>Games...Tucked Away</h4>
+        </div>
     </section>
     <section>
-        <div></div>
+        <div id="popular-games">
+            <h2>Popular Games</h2>
+            <div id="game-list">
+                <div class="game-container" id=""><img src="" alt=""></div>
+                <div class="game-container" id=""><img src="" alt=""></div>
+                <div class="game-container" id=""><img src="" alt=""></div>
+                <div class="game-container" id=""><img src="" alt=""></div>
+                <div class="game-container" id=""><img src="" alt=""></div>
+            </div>
+        </div>
     </section>
-<footer></footer>
+    <footers>
+        <p>© 2023 gameKive. All rights reserved.</p>
+        <p>Made with |<a href="https://rawg.io/"> RAWG </a>API</p>
+    </footer>
 </body>
+<script src="main.js" type="module"></script>
 </html>
