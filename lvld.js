@@ -13,13 +13,10 @@ const fetchFrom = async (url) => {
   return data;
 };
 
-let gameQuantity = 5;
 ///DOM elements
 const gameList = document.querySelector("#game-list");
 const getGames = async () => {
-  let allGamesData = await fetchFrom(
-    gameListAPI + `&page_size=${gameQuantity}`
-  );
+  let allGamesData = await fetchFrom(gameListAPI);
   allGamesData = allGamesData.results;
   console.log(allGamesData);
 
