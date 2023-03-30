@@ -5,6 +5,7 @@ const searchFormDiv = document.querySelector(".search-form");
 const gameFilterForm = document.querySelector(".game-filter");
 const gameFilterInput = document.querySelector("#game-filter-input");
 
+
 const fetchFrom = async (url) => {
   try {
     const response = await fetch(url);

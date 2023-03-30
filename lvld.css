@@ -7,6 +7,7 @@ body {
   height: 75%;
   width: 100%;
   border-radius: 3px;
+  position: auto;
 }
 
 #featured-games {
@@ -26,7 +27,7 @@ div {
 }
 
 body {
-  background-color: lightpink;
+  background-color: #C84B31;
 }
 
  /* .navbar{
@@ -34,8 +35,10 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #d2b9d3;
-} */
+  background-color: #617143;
+}
+
+
 
 /* .nav-link a{
   float: left;
@@ -50,11 +53,9 @@ body {
 }
 
 .nav-link a:hover {
-  background-color: lightpink;
-} */
-.active {
-  background-color: #967bb6;
+  background-color: #ECDBBA;
 }
+
 
 .card{
   width: 15%;

@@ -16,6 +16,11 @@ const fetchFrom = async (url) => {
 let gameQuantity = 5;
 ///DOM elements
 const gameList = document.querySelector("#game-list");
+const searchButtonForm = document.querySelector("#search-form")
+
+
+
+
 const getGames = async () => {
   let allGamesData = await fetchFrom(
     gameListAPI + `&page_size=${gameQuantity}`
@@ -24,7 +29,7 @@ const getGames = async () => {
   console.log(allGamesData);
 
   allGamesData.forEach((game) => {
-    makeBootStrapCard(game.background_image, game.name ,game.id)
+ makeBootStrapCard(game.background_image, game.name ,game.id)
   });
 };
 
