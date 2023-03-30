@@ -24,23 +24,27 @@ const getGames = async () => {
   console.log(allGamesData);
 
   allGamesData.forEach((game) => {
-    let p = document.createElement("p");
-    let div = document.createElement("div");
-    let img = document.createElement("img");
-    img.src = game.background_image;
-    img.classList.add("game-image");
-    div.classList.add("cell")
-    div.classList.add("card")
-    div.addEventListener("click", clickHandler);
-
-    
-    img.id = game.id;
-    p.innerText = game.name;
-
-    div.append(p);
-    div.append(img);
-    gameList.append(div);
-    
-
+    makeBootStrapCard(game.background_image, game.name ,game.id)
   });
 };
+
+function makeBootStrapCard(gameImage, title, id) {
+  const cardDiv = document.createElement('div')
+  cardDiv.classList.add('card')
+  cardDiv.classList.add('text-bg-light')
+
+  gameList.appendChild(cardDiv)
+  const img = document.createElement('img')
+  img.classList.add('card-img-top')
+  img.classList.add('game-image')
+  img.src = gameImage
+  img.id = id
+  cardDiv.appendChild(img)
+  const cardBody = document.createElement('div')
+  cardBody.classList.add('card-body')
+  cardDiv.appendChild(cardBody)
+  const cardH6 = document.createElement('h6')
+  cardBody.appendChild(cardH6)
+  cardH6.classList.add('card-title')
+  cardH6.textContent = title
+}

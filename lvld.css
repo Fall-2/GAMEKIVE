@@ -1,8 +1,11 @@
-
+body {
+  width: 100%;
+  height: 100vh;
+}
 
 .game-image {
-  height: 80px;
-  width: 100px;
+  height: 75%;
+  width: 100%;
   border-radius: 3px;
 }
 
@@ -11,7 +14,7 @@
   width: 100%;
 }
 #game-list {
-  height: 100%;
+  height: 75%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -26,19 +29,19 @@ body {
   background-color: lightpink;
 }
 
- .navbar{
+ /* .navbar{
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #d2b9d3;
-}
+} */
 
-.nav-link a{
+/* .nav-link a{
   float: left;
-}
+} */
 
-.nav-link.active{
+/* .nav-link.active{
   display: block;
   color: black;
   text-align: center;
@@ -48,12 +51,12 @@ body {
 
 .nav-link a:hover {
   background-color: lightpink;
-}
+} */
 .active {
   background-color: #967bb6;
 }
 
 .card{
-  background: transparent;
-  height: 25%;
+  width: 15%;
+  height: 30%;
 }
