@@ -1,79 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LVLD</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lvld.css " >
+    <link rel="stylesheet" href="lvld.css ">
     <script type="module" src="lvld.js"></script>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <img class="navbar-brand" src="logo.png">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="container">
-                <div class="row">
-                  <div class="col-12">
-                    <div id="search-results"></div>
-                  </div>
-                </div>
-              </div>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-        <div class="container d-flex justify-content-center">
+        <div class="container d-gitflex justify-content-center">
             <form class="row align-items-end" onsubmit="searchGames(event)">
                 <div class="form-group col-12 col-md-4">
-                <label for="platform-select">Platform:</label>
-                <select id="platform-select" class="form-control">
-                    <option value="">All</option>
-                    <option value="1">PC</option>
-                    <option value="2">PlayStation</option>
-                    <option value="3">Xbox</option>
-                    <option value="4">Nintendo</option>
-                    <option value="5">iOS</option>
-                    <option value="6">Android</option>
-                </select>
+                    <label for="platform-select">Platform:</label>
+                    <select id="platform-select" class="form-control">
+                        <option value="">All</option>
+                        <option value="1">PC</option>
+                        <option value="2">PlayStation</option>
+                        <option value="3">Xbox</option>
+                        <option value="4">Nintendo</option>
+                        <option value="5">iOS</option>
+                        <option value="6">Android</option>
+                    </select>
                 </div>
-            
                 <div class="form-group col-12 col-md-4">
-                <label for="genre-select">Genre:</label>
-                <select id="genre-select" class="form-control">
-                    <option value="">All</option>
-                    <option value="4">Action</option>
-                    <option value="5">Adventure</option>
-                    <option value="6">RPG</option>
-                    <option value="7">Strategy</option>
-                    <option value="8">Sports</option>
-                    <option value="9">Simulation</option>
-                    <option value="10">Puzzle</option>
-                </select>
+                    <label for="genre-select">Genre:</label>
+                    <select id="genre-select" class="form-control">
+                        <option value="">All</option>
+                        <option value="4">Action</option>
+                        <option value="5">Adventure</option>
+                        <option value="6">RPG</option>
+                        <option value="7">Strategy</option>
+                        <option value="8">Sports</option>
+                        <option value="9">Simulation</option>
+                        <option value="10">Puzzle</option>
+                    </select>
                 </div>
-            
                 <div class="form-group col-12 col-md-4">
-                <button type="submit" class="btn btn-primary mt-3 mt-md-0" style="margin-left: auto; color:">Filter</button>
+                    <button type="submit" class="btn btn-primary mt-3 mt-md-0"
+                        style="margin-left: auto;">Filter</button>
                 </div>
             </form>
         </div>
-    <section id = "featured-games">
+    </div>
+    <section id="featured-games">
         <div id="game-list">
 
         </div>
     </section>
-  
-
+    <div id="next-prev-div">
+        <button type="button" class="btn btn-primary btn-sm">Small button</button>
+        <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+    </div>
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
-  </body>
-  <script src="main.js" type="'module"></script>
+</body>
+<script src="main.js" type="'module"></script>
+
 </html>
