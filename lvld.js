@@ -16,6 +16,11 @@ const fetchFrom = async (url) => {
 let gameQuantity = 5;
 ///DOM elements
 const gameList = document.querySelector("#game-list");
+const searchButtonForm = document.querySelector("#search-form")
+
+
+
+
 const getGames = async () => {
   let allGamesData = await fetchFrom(
     gameListAPI + `&page_size=${gameQuantity}`
@@ -27,7 +32,8 @@ const getGames = async () => {
     let p = document.createElement("p");
     let div = document.createElement("div");
     let img = document.createElement("img");
-    img.src = game.background_image;
+     img.src = game.background_image;
+    // img.classList.add("")
     img.classList.add("game-image");
     div.classList.add("cell")
     div.classList.add("card")

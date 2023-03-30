@@ -1,9 +1,10 @@
 
 
 .game-image {
-  height: 80px;
-  width: 100px;
+  height:486px;
+  width: 147px;
   border-radius: 3px;
+  position: auto;
 }
 
 #featured-games {
@@ -23,7 +24,7 @@ div {
 }
 
 body {
-  background-color: lightpink;
+  background-color: #C84B31;
 }
 
  .navbar{
@@ -31,7 +32,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #d2b9d3;
+  background-color: #617143;
 }
 
 .nav-link a{
@@ -47,13 +48,14 @@ body {
 }
 
 .nav-link a:hover {
-  background-color: lightpink;
+  background-color: #ECDBBA;
 }
 .active {
-  background-color: #967bb6;
+  background-color: #;
 }
 
 .card{
-  background: transparent;
-  height: 25%;
+  background: white;
+  height: 35%;
+  text-align: center;
 }
