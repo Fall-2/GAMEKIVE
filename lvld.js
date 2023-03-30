@@ -15,13 +15,18 @@ const fetchFrom = async (url) => {
 
 ///DOM elements
 const gameList = document.querySelector("#game-list");
+const searchButtonForm = document.querySelector("#search-form")
+
+
+
+
 const getGames = async () => {
   let allGamesData = await fetchFrom(gameListAPI);
   allGamesData = allGamesData.results;
   console.log(allGamesData);
 
   allGamesData.forEach((game) => {
-    makeBootStrapCard(game.background_image, game.name ,game.id)
+ makeBootStrapCard(game.background_image, game.name ,game.id)
   });
 };
 
@@ -44,4 +49,5 @@ function makeBootStrapCard(gameImage, title, id) {
   cardBody.appendChild(cardH6)
   cardH6.classList.add('card-title')
   cardH6.textContent = title
+  
 }
