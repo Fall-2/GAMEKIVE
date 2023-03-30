@@ -52,4 +52,5 @@ function makeBootStrapCard(gameImage, title, id) {
   cardBody.appendChild(cardH6)
   cardH6.classList.add('card-title')
   cardH6.textContent = title
+  
 }
