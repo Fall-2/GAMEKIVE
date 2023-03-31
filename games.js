@@ -3,7 +3,7 @@ const allDivs = document.querySelectorAll('.cell')
 const allGamesView = document.querySelector('.game-select-view')
 const singleGameView = document.querySelector('.game-display')
 const searchFormDiv = document.querySelector('.search-form')
-const gameFilterForm = document.querySelector('.game-filter')
+const gameFilterForm = document.querySelector('.game-filte-form')
 const gameFilterInput = document.querySelector('#game-filter-input')
 
 const fetchFrom = async (url) => {
@@ -36,8 +36,8 @@ const getFilteredGames = async (e) => {
     console.log(data)
 }
 
-searchFormDiv.addEventListener('submit', getSearchedGames)
-gameFilterInput.addEventListener('click', getFilteredGames)
+
+// gameFilterInput.addEventListener('click', getFilteredGames)
 
 allDivs.forEach(div => {
     div.addEventListener('click', clickHandler)
