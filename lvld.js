@@ -9,6 +9,7 @@ const gameListAPI = `https://api.rawg.io/api/games?key=${ourAPIKEY.OUR_API_KEY}`
 ////DOM Elements////
 ////////////////////
 
+const gameList = document.querySelector('.game-list')
 const filterFormDiv = document.querySelector(".game-filter-form");
 const prevButton = document.querySelector("#prev");
 const nextButton = document.querySelector("#next");
@@ -50,10 +51,23 @@ const storeResponseData = function(data) {
   localStorage.setItem('responseData', JSON.stringify(data));
 }
 
-const getGames = async (gamesURl) => {
+const displayGames = async (parentElement, gamesArray) => {
+  gamesArray.forEach(game => {
+    const gameDiv = document.createElement('div')
+    const gameImg = document.createElement('img')
+    parentElement.appendChild(gameDiv)
+    gameDiv.appendChild(gameImg)
+    gameImg.src = game.background_image
+    gameImg.id = game.id
+    gameImg.alt = game.name
+  });
+}
+
+const getGames = async (gamesURL) => {
   const data = await fetchFrom(gamesURL)
-  storeResponseData(data)
-  console.log(data)
+  displayGames(gameList, data.results)
+  // storeResponseData(data)
+  // console.log(data)
 };
 
 const setButtonUrls = (next, prev) => {
@@ -71,18 +85,19 @@ const reloadHTML = () => {
   window.location.reload()
 }
 
-///////////////////////
-////Event Listeners////
-///////////////////////
 
-document.addEventListener('DOMContentLoaded', async () => {
-  if(localStorage.responseData) {
-    console.log('yes')
-    const dataConvertedToJavascript = JSON.parse(localStorage.getItem('responseData'))
-    console.log(dataConvertedToJavascript)
-    const nextData = await fetchFrom(dataConvertedToJavascript.next)
-    console.log(nextData)
-    setButtonUrls(dataConvertedToJavascript.next, dataConvertedToJavascript.prev)
+
+document.addEventListener('DOMContentLoaded', () => {
+  // if(localStorage.responseData) {
+  //   console.log('yes')
+  //   const dataConvertedToJavascript = JSON.parse(localStorage.getItem('responseData'))
+  //   console.log(dataConvertedToJavascript)
+  //   const nextData = await fetchFrom(dataConvertedToJavascript.next)
+  //   console.log(nextData)
+  //   setButtonUrls(dataConvertedToJavascript.next, dataConvertedToJavascript.prev)
+  // }
+  if(window.location.href === "http://127.0.0.1:5500/Projects-Weeks/Lvld/games.html") {
+    getGames(gameListAPI)
   }
 })
 
