@@ -1,15 +1,28 @@
+///////////////
+////API KEY////
+///////////////
+
 import ourAPIKEY from "./config.js";
 
-console.log(ourAPIKEY);
 
+
+////////////////////
+////DOM Elements////
+////////////////////
+
+const searchFormDiv = document.querySelector('.search-form')
+const gameList = document.querySelector('.game-list')
+
+/////////////////
+////Variables////
+/////////////////
 const basic = `https://api.rawg.io/api/games/`
 const gameListAPI = `https://api.rawg.io/api/games?key=${ourAPIKEY.OUR_API_KEY}`
+const pageSize = 5
 
-
-const gamesList = document.querySelector('#game-list')
-// const gameFilterInput = document.querySelector("#game-filter-input");
-console.log()
-
+////////////////////////
+////Helper Functions////
+////////////////////////
 
 const fetchFrom = async (url) => {
   try {
@@ -22,7 +35,7 @@ const fetchFrom = async (url) => {
   }
 };
 
-const displayPopularGames = async (parentElement, gamesArray) => {
+const displayGames = async (parentElement, gamesArray) => {
   gamesArray.forEach(game => {
     const gameDiv = document.createElement('div')
     const gameImg = document.createElement('img')
@@ -66,3 +79,24 @@ function clickHandler(e) {
 
   }
 }
+
+const getNewGames = async () => {
+  const url = `${gameListAPI}&dates=${getDateRange()}&page_size=${pageSize}`
+  const data = await fetchFrom(url)
+  displayGames(gameList, data.results)
+}
+
+const getDateRange = () => {
+  const timeStamp = new Date()
+  const year = String(timeStamp.getFullYear())
+  const month = String(timeStamp.getMonth() + 1)
+  const day = String(timeStamp.getDate())
+  const dateRange = `${year}-01-01,${year}-${month.length > 1 ? month : 0 + month}-${day.length > 1 ? day : 0 + day}`
+  return dateRange
+}
+
+///////////////////////
+////Event Listeners////
+///////////////////////
+
+document.addEventListener('DOMContentLoaded', getNewGames)
