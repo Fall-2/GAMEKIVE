@@ -27,7 +27,6 @@ const pageSize = 5
 const fetchFrom = async (url) => {
   try {
     const response = await fetch(url);
-    console.log(response);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -35,10 +34,20 @@ const fetchFrom = async (url) => {
   }
 };
 
+const getClickedGameInfo = async (e) => {
+  const gameID = e.target.id
+  const url = `${basic}${gameID}?key=${ourAPIKEY.OUR_API_KEY}`
+  console.log(url)
+  const data = await fetchFrom(url)
+  localStorage.setItem('gameDataToView', JSON.stringify(data))
+  window.location.href = 'singleGameView.html'
+}
+
 const displayGames = async (parentElement, gamesArray) => {
   gamesArray.forEach(game => {
     const gameDiv = document.createElement('div')
     const gameImg = document.createElement('img')
+    gameDiv.addEventListener('click', getClickedGameInfo)
     parentElement.appendChild(gameDiv)
     gameDiv.appendChild(gameImg)
     gameImg.src = game.background_image
@@ -53,16 +62,12 @@ const getSearchedGames = async (e) => {
   const data = await fetchFrom(
     `https://api.rawg.io/api/games?key=749e1b5c19c34bdd9870484338400f97&search=${searchTerm}`
   );
-  const gamesToStore = data.results
-  console.log(gamesToStore);
-  localStorage.setItem("gamesToStore", JSON.stringify(gamesToStore));
+  const gameToStore = data.results
+  localStorage.setItem("gameToStore", JSON.stringify(gameToStore));
   console.log(localStorage.gamesToStore);
   // window.location.href = 'searched.html'
 };
 
-
-
-searchFormDiv.addEventListener("submit", getSearchedGames);
 // gameFilterInput.addEventListener("click", getFilteredGames);
 
 // allDivs.forEach((div) => {
@@ -100,3 +105,4 @@ const getDateRange = () => {
 ///////////////////////
 
 document.addEventListener('DOMContentLoaded', getNewGames)
+searchFormDiv.addEventListener("submit", getSearchedGames);

@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
 </head>
+
 <body>
-  <section>
-    <div>
-      <h1>GAMEKIVE</h1>
-      <nav>
-        <h3 class="link" id="games-link"><a href="games.html">Games</a></h3>
-        <h3 class="link" id="lists-link">Your Lists <a></a></h3>
-      </nav>
-      <form action="" class="search-form">
-        <input class='search-input' type="text">
-      </form>
-    </div>
-  </section>
-  <section>
-    <div></div>
-    <div></div>
-    <div></div>
-  </section>
-  <footer>
-    <p>© 2023 gameKive. All rights reserved.</p>
-    <p>Made with |<a href="https://rawg.io/"> RAWG </a>API</p>
-  </footer>
+    <section>
+        <div>
+            <h1 class="brand"><a href="landing.html">gameKive</a></h1>
+            <nav>
+                <h3 class="link" id="games-link"><a href="games.html">Games</a></h3>
+                <h3 class="link" id="lists-link">Your Lists <a></a></h3>
+            </nav>
+            <form action="" class="search-form">
+                <input class='search-input' type="text">
+            </form>
+        </div>
+    </section>
+    <section>
+        <div id="game-rating-img">
+            <img id='game-image' src="" alt="">
+            <div id="ratings-container">
+                <h4>Ratings:</h4>
+                <div id="game-ratings">
+                    <p class="rating"></p>
+                    <p class="rating"></p>
+                    <p class="rating"></p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="game-info">
+                <div id="headers">
+                    <h3 id="game-title"></h3>
+                    <p id="year-published"></p>
+                    <p id="game-developer"></p>
+                </div>
+                <p id="game-description"></p>
+                <div id="game-screenshots">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>© 2023 gameKive. All rights reserved.</p>
+        <p>Made with |<a href="https://rawg.io/"> RAWG </a>API</p>
+    </footer>
 </body>
-<script type = "module" src = "main.js">
+<script type="module" src="singleGameView.js">
 </script>
+
 </html>
