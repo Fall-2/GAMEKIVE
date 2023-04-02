@@ -12,6 +12,7 @@ import ourAPIKEY from "./config.js";
 
 const searchFormDiv = document.querySelector('.search-form')
 const gameList = document.querySelector('.game-list')
+// const gameContainer = document.querySelector('.game-container')
 
 /////////////////
 ////Variables////
@@ -39,6 +40,7 @@ const displayGames = async (parentElement, gamesArray) => {
   gamesArray.forEach(game => {
     const gameDiv = document.createElement('div')
     const gameImg = document.createElement('img')
+    
     parentElement.appendChild(gameDiv)
     gameDiv.appendChild(gameImg)
     gameImg.src = game.background_image
