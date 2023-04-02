@@ -4,8 +4,6 @@
 
 import ourAPIKEY from "./config.js";
 
-
-
 ////////////////////
 ////DOM Elements////
 ////////////////////
@@ -28,7 +26,6 @@ const pageSize = 5
 const fetchFrom = async (url) => {
   try {
     const response = await fetch(url);
-    console.log(response);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -36,11 +33,21 @@ const fetchFrom = async (url) => {
   }
 };
 
+const getClickedGameInfo = async (e) => {
+  const gameID = e.target.id
+  const url = `${basic}${gameID}?key=${ourAPIKEY.OUR_API_KEY}`
+  console.log(url)
+  const data = await fetchFrom(url)
+  localStorage.setItem('gameDataToView', JSON.stringify(data))
+  window.location.href = 'singleGameView.html'
+}
+
 const displayGames = async (parentElement, gamesArray) => {
   gamesArray.forEach(game => {
     const gameDiv = document.createElement('div')
     const gameImg = document.createElement('img')
-    
+    gameDiv.addEventListener('click', getClickedGameInfo)
+    gameDiv.classList.add('game-container')
     parentElement.appendChild(gameDiv)
     gameDiv.appendChild(gameImg)
     gameImg.src = game.background_image
@@ -52,26 +59,15 @@ const displayGames = async (parentElement, gamesArray) => {
 const getSearchedGames = async (e) => {
   e.preventDefault();
   const searchTerm = e.target.children[0].value;
+  console.log(searchTerm)
   const data = await fetchFrom(
     `https://api.rawg.io/api/games?key=749e1b5c19c34bdd9870484338400f97&search=${searchTerm}`
-  );
-  const gamesToStore = data.results
-  console.log(gamesToStore);
-  localStorage.setItem("gamesToStore", JSON.stringify(gamesToStore));
-  console.log(localStorage.gamesToStore);
-  // window.location.href = 'searched.html'
+    );
+  const dataToStore = data.results
+  localStorage.setItem("searchedGames", JSON.stringify(dataToStore));
+  console.log(localStorage.searchedGames);
+  window.location.href = 'results.html'
 };
-
-
-
-searchFormDiv.addEventListener("submit", getSearchedGames);
-// gameFilterInput.addEventListener("click", getFilteredGames);
-
-// allDivs.forEach((div) => {
-//   div.addEventListener("click", clickHandler);
-// });
-
-
 
 function clickHandler(e) {
   if (window.location.href !== "singleGameView.html") {
@@ -102,3 +98,4 @@ const getDateRange = () => {
 ///////////////////////
 
 document.addEventListener('DOMContentLoaded', getNewGames)
+searchFormDiv.addEventListener("submit", getSearchedGames);
