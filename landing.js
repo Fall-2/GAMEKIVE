@@ -10,7 +10,7 @@ import ourAPIKEY from "./config.js";
 
 const searchFormDiv = document.querySelector('.search-form')
 const gameList = document.querySelector('.game-list')
-console.log(searchFormDiv)
+
 /////////////////
 ////Variables////
 /////////////////
@@ -67,14 +67,6 @@ const getSearchedGames = async (e) => {
   console.log(localStorage.searchedGames);
   window.location.href = 'results.html'
 };
-
-// gameFilterInput.addEventListener("click", getFilteredGames);
-
-// allDivs.forEach((div) => {
-//   div.addEventListener("click", clickHandler);
-// });
-
-
 
 function clickHandler(e) {
   if (window.location.href !== "singleGameView.html") {
