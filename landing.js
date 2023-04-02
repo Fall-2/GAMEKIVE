@@ -4,15 +4,13 @@
 
 import ourAPIKEY from "./config.js";
 
-
-
 ////////////////////
 ////DOM Elements////
 ////////////////////
 
 const searchFormDiv = document.querySelector('.search-form')
 const gameList = document.querySelector('.game-list')
-
+console.log(searchFormDiv)
 /////////////////
 ////Variables////
 /////////////////
@@ -48,6 +46,7 @@ const displayGames = async (parentElement, gamesArray) => {
     const gameDiv = document.createElement('div')
     const gameImg = document.createElement('img')
     gameDiv.addEventListener('click', getClickedGameInfo)
+    gameDiv.classList.add('game-container')
     parentElement.appendChild(gameDiv)
     gameDiv.appendChild(gameImg)
     gameImg.src = game.background_image
@@ -59,13 +58,14 @@ const displayGames = async (parentElement, gamesArray) => {
 const getSearchedGames = async (e) => {
   e.preventDefault();
   const searchTerm = e.target.children[0].value;
+  console.log(searchTerm)
   const data = await fetchFrom(
     `https://api.rawg.io/api/games?key=749e1b5c19c34bdd9870484338400f97&search=${searchTerm}`
-  );
-  const gameToStore = data.results
-  localStorage.setItem("gameToStore", JSON.stringify(gameToStore));
-  console.log(localStorage.gamesToStore);
-  // window.location.href = 'searched.html'
+    );
+  const dataToStore = data.results
+  localStorage.setItem("searchedGames", JSON.stringify(dataToStore));
+  console.log(localStorage.searchedGames);
+  window.location.href = 'results.html'
 };
 
 // gameFilterInput.addEventListener("click", getFilteredGames);

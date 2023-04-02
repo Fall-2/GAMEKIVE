@@ -3,14 +3,15 @@
 ///////////////
 
 import ourAPIKEY from "./config.js";
-const gameListAPI = `https://api.rawg.io/api/games?key=${ourAPIKEY.OUR_API_KEY}`;
 
 ////////////////////
 ////DOM Elements////
 ////////////////////
 
 const gameList = document.querySelector('.game-list')
-const filterFormDiv = document.querySelector(".game-filter-form");
+const searchFormDiv = document.querySelector('.search-form')
+const gameFilterForm = document.querySelector('.game-filter-form')
+const filterTerms = document.querySelectorAll('.filter-term')
 const prevButton = document.querySelector("#prev");
 const nextButton = document.querySelector("#next");
 console.log(prevButton, nextButton)
@@ -19,6 +20,8 @@ console.log(prevButton, nextButton)
 ////Variables////
 /////////////////
 
+const basic = `https://api.rawg.io/api/games/`
+const gameListAPI = `https://api.rawg.io/api/games?key=${ourAPIKEY.OUR_API_KEY}`;
 const prevGameResults = null
 const currentGameResults = null
 const nextGameResults = null
@@ -34,27 +37,51 @@ const fetchFrom = async (url) => {
   return data;
 };
 
+const getSearchedGames = async (e) => {
+  e.preventDefault();
+  const searchTerm = e.target.children[0].value;
+  console.log(searchTerm)
+  const data = await fetchFrom(
+    `https://api.rawg.io/api/games?key=749e1b5c19c34bdd9870484338400f97&search=${searchTerm}`
+    );
+  const dataToStore = data.results
+  localStorage.setItem("searchedGames", JSON.stringify(dataToStore));
+  console.log(localStorage.searchedGames);
+  window.location.href = 'results.html'
+};
+
 const getFilteredGames = async (e) => {
   e.preventDefault();
-  let url = gameListAPI;
-  const filterTerms = document.querySelectorAll('.filter-term')
-  filterTerms.forEach((term) => {
-    url += `&${term.name}=${term.value}`;
-  });
-  const data = await fetchFrom(url);
-  console.log(data)
-  storeResponseData(data)
-  window.location.href = 'games.html'
-};
+  let url = gameListAPI
+  filterTerms.forEach(term => {
+      url += `&${term.name}=${term.value}`
+  })
+  const data = await fetchFrom(url)
+  const dataToStore = data.results
+  localStorage.setItem("searchedGames", JSON.stringify(dataToStore));
+  console.log(localStorage.searchedGames);
+  window.location.href = 'results.html'
+}
 
 const storeResponseData = function(data) {
   localStorage.setItem('responseData', JSON.stringify(data));
+}
+
+const getClickedGameInfo = async (e) => {
+  const gameID = e.target.id
+  const url = `${basic}${gameID}?key=${ourAPIKEY.OUR_API_KEY}`
+  console.log(url)
+  const data = await fetchFrom(url)
+  localStorage.setItem('gameDataToView', JSON.stringify(data))
+  window.location.href = 'singleGameView.html'
 }
 
 const displayGames = async (parentElement, gamesArray) => {
   gamesArray.forEach(game => {
     const gameDiv = document.createElement('div')
     const gameImg = document.createElement('img')
+    gameDiv.addEventListener('click', getClickedGameInfo)
+    gameDiv.classList.add('game-container')
     parentElement.appendChild(gameDiv)
     gameDiv.appendChild(gameImg)
     gameImg.src = game.background_image
@@ -70,52 +97,34 @@ const getGames = async (gamesURL) => {
   // console.log(data)
 };
 
-const setButtonUrls = (next, prev) => {
-  if(next !== 'undefined') {
-    nextButton.url = next
-  }
-  if(prev !== 'undefined') {
-    prevButton.url = prev
-  }
-  console.log(`prev URL: ${prevButton.url}`)
-  console.log(`next URL: ${nextButton.url}`)
-}
-
-const reloadHTML = () => {
-  window.location.reload()
-}
-
-
+///////////////////////
+////Event Listeners////
+///////////////////////
 
 document.addEventListener('DOMContentLoaded', () => {
-  // if(localStorage.responseData) {
-  //   console.log('yes')
-  //   const dataConvertedToJavascript = JSON.parse(localStorage.getItem('responseData'))
-  //   console.log(dataConvertedToJavascript)
-  //   const nextData = await fetchFrom(dataConvertedToJavascript.next)
-  //   console.log(nextData)
-  //   setButtonUrls(dataConvertedToJavascript.next, dataConvertedToJavascript.prev)
-  // }
-  if(window.location.href === "http://127.0.0.1:5500/Projects-Weeks/Lvld/games.html") {
-    getGames(gameListAPI)
-  }
+  const gamesToDisplay = JSON.parse(localStorage.getItem('searchedGames'));
+  console.log(gamesToDisplay)
+  displayGames(gameList, gamesToDisplay)
 })
 
-filterFormDiv.addEventListener("submit", getFilteredGames);
+searchFormDiv.addEventListener("submit", getSearchedGames);
+gameFilterForm.addEventListener("submit", getFilteredGames);
 
-prevButton.addEventListener("click", (e) => {
-  if(e.target.url !== undefined) { 
-    getGames(e.target.url)
-    console.log('prev is defined')
-    reloadHTML()
-  }
-});
+// filterFormDiv.addEventListener("click", getFilteredGames);
 
-nextButton.addEventListener("click", (e) => {
-  debugger;
-  if(e.target.url !== undefined) { 
-    getGames(e.target.url)
-    console.log('next is defined')
-    reloadHTML()
-  }
-});
+// prevButton.addEventListener("click", (e) => {
+//   if(e.target.url !== undefined) { 
+//     getGames(e.target.url)
+//     console.log('prev is defined')
+//     reloadHTML()
+//   }
+// });
+
+// nextButton.addEventListener("click", (e) => {
+//   debugger;
+//   if(e.target.url !== undefined) { 
+//     getGames(e.target.url)
+//     console.log('next is defined')
+//     reloadHTML()
+//   }
+// });

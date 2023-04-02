@@ -1,26 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  <section>
+  <section class="navbar">
     <div>
-      <h1 class="brand"><a href="landing.html">gameKive</a></h1>
-      <nav></nav>
-      <form></form>
+        <h1 class="brand"><a href="landing.html">gameKive</a></h1>
+        <div>
+            <nav>
+                <h3 class="link" id="games-link"><a href="games.html">Games</a></h3>
+                <h3 class="link" id="lists-link">Your Lists <a></a></h3>
+            </nav>
+        </div>
+        <form action="" class="search-form">
+            <input class='search-input' type="text">
+        </form>
+    </div>
+</section>
+  <section class="filter-section">
+    <form class="game-filter-form">
+      <label for="genre">Genre:</label>
+      <select class='filter-term' id="genre" name="genres">
+        <option value="">--Select a platform--</option>
+        <option value="action">Action</option>
+        <option value="indie">Indie</option>
+        <option value="adventure">Adventure</option>
+        <option value="role-playing-games-rpg">RPG</option>
+        <option value="strategy">Strategy</option>
+        <option value="shooter">Shooter</option>
+        <option value="casual">Casual</option>
+        <option value="simulation">Simulation</option>
+        <option value="puzzle">Puzzle</option>
+        <option value="arcade">Arcade</option>
+        <option value="platformer">Platformer</option>
+        <option value="racing">Racing</option>
+        <option value="massively-multiplayer">MMO</option>
+        <option value="sports">Sports</option>
+        <option value="fighting">Fighting</option>
+        <option value="family">Family</option>
+        <option value="board-games">Board Games</option>
+        <option value="educational">Educational</option>
+        <option value="card">Card</option>
+      </select>
+      <label for="platform">Platform:</label>
+      <select class='filter-term' id="platform" name="platforms">
+        <option value="">--Select a platform--</option>
+        <option value="4">PC</option>
+        <option value="187">PlayStation 5</option>
+        <option value="18">PlayStation 4</option>
+        <option value="1">Xbox One</option>
+        <option value="186">Xbox Series S/X</option>
+        <option value="7">Nintendo Switch</option>
+      </select>
+      <input type="submit" value="Filter">
+    </form>
+  </section>
+  <section>
+    <div class="game-list">
     </div>
   </section>
-  <div></div>
-  <section>
-    <div></div>
-  </section>
-  <button></button>
-  <button></button>
-  <footer></footer>
+  <div class="button-container">
+    <button id="prev" class="button" url="">Prev</button>
+    <button id="next" class="button" url="">Next</button>
+  </div>
+  <footer>
+    <p>© 2023 gameKive. All rights reserved.</p>
+    <p>Made with |<a href="https://rawg.io/"> RAWG </a>API</p>
+  </footer>
 </body>
 <script type="module" src="results.js"></script>
+
 </html>

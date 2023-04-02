@@ -9,6 +9,7 @@ import ourAPIKEY from "./config.js";
 ////DOM Elements////
 ////////////////////
 
+const searchFormDiv = document.querySelector('.search-form')
 const gameImg = document.querySelector('#game-image')
 const gameRatings = document.querySelector('#game-ratings')
 const gameTitle = document.querySelector('#game-title')
@@ -36,6 +37,19 @@ const fetchFrom = async (url) => {
     } catch (error) {
       console.log(error);
     }
+};
+
+const getSearchedGames = async (e) => {
+    e.preventDefault();
+    const searchTerm = e.target.children[0].value;
+    console.log(searchTerm)
+    const data = await fetchFrom(
+      `https://api.rawg.io/api/games?key=749e1b5c19c34bdd9870484338400f97&search=${searchTerm}`
+      );
+    const dataToStore = data.results
+    localStorage.setItem("searchedGames", JSON.stringify(dataToStore));
+    console.log(localStorage.searchedGames);
+    window.location.href = 'results.html'
 };
 
 const getGameScreenShots = async (gameID) => {
@@ -69,3 +83,4 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(gameData)
     populateDOM(gameData)
 })
+searchFormDiv.addEventListener("submit", getSearchedGames);
