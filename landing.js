@@ -10,6 +10,7 @@ import ourAPIKEY from "./config.js";
 
 const searchFormDiv = document.querySelector('.search-form')
 const gameList = document.querySelector('.game-list')
+// const gameContainer = document.querySelector('.game-container')
 
 /////////////////
 ////Variables////
