@@ -54,6 +54,7 @@ const displayGames = async (parentElement, gamesArray) => {
       const gameImg = document.createElement('img')
       gameDiv.addEventListener('click', getClickedGameInfo)
       gameDiv.classList.add('game-container')
+      gameImg.classList.add('game-image')
       parentElement.appendChild(gameDiv)
       gameDiv.appendChild(gameImg)
       gameImg.src = game.background_image
